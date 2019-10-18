@@ -1,18 +1,9 @@
 # ===========================================================================
 # Kernel configuration targets
 # These targets are used from top-level makefile
-#
-# SPDX-License-Identifier:	GPL-2.0
-#
 
 PHONY += xconfig gconfig menuconfig config silentoldconfig update-po-config \
 	localmodconfig localyesconfig
-
-# Added for U-Boot
-#  Linux has defconfig files in arch/$(SRCARCH)/configs/,
-#  on the other hand, U-Boot does in configs/.
-#  Set SRCARCH to .. fake this Makefile.
-SRCARCH := ..
 
 ifdef KBUILD_KCONFIG
 Kconfig := $(KBUILD_KCONFIG)
@@ -120,10 +111,6 @@ endif
 %_defconfig: $(obj)/conf
 	$(Q)$< $(silent) --defconfig=arch/$(SRCARCH)/configs/$@ $(Kconfig)
 
-# Added for U-Boot (backward compatibility)
-%_config: %_defconfig
-	@:
-
 configfiles=$(wildcard $(srctree)/kernel/configs/$@ $(srctree)/arch/$(SRCARCH)/configs/$@)
 
 %.config: $(obj)/conf
@@ -165,9 +152,9 @@ help:
 	@echo  '  listnewconfig   - List new options'
 	@echo  '  olddefconfig	  - Same as silentoldconfig but sets new symbols to their'
 	@echo  '                    default value'
-#	@echo  '  kvmconfig	  - Enable additional options for kvm guest kernel support'
-#	@echo  '  xenconfig       - Enable additional options for xen dom0 and guest kernel support'
-#	@echo  '  tinyconfig	  - Configure the tiniest possible kernel'
+	@echo  '  kvmconfig	  - Enable additional options for kvm guest kernel support'
+	@echo  '  xenconfig       - Enable additional options for xen dom0 and guest kernel support'
+	@echo  '  tinyconfig	  - Configure the tiniest possible kernel'
 
 # lxdialog stuff
 check-lxdialog  := $(srctree)/$(src)/lxdialog/check-lxdialog.sh

@@ -1,0 +1,8 @@
+#
+# Automatically generated make config: don't edit
+# Busybox version: 
+# Fri Oct 18 10:57:45 2019
+#
+# CONFIG_USER_APP1_SELECT is not set
+CONFIG_USER_APP2_SELECT=y
+# CONFIG_USER_APP3_SELECT is not set

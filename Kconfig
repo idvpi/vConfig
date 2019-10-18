@@ -1,0 +1,20 @@
+#
+# For a description of the syntax of this configuration file,
+# see Documentation/kbuild/kconfig-language.txt.
+#
+mainmenu "Configuration"
+config USER_APP1_SELECT
+	bool "user app1"
+	default n
+	help
+	  "user app1"
+config USER_APP2_SELECT
+	bool "user app2"
+	default n
+	help
+	  "user app2"
+config USER_APP3_SELECT
+	bool "user app3"
+	default n
+	help
+	  "user app3"
