@@ -16,6 +16,7 @@ include $(if $(wildcard $(kbuild-dir)/Kbuild), $(kbuild-dir)/Kbuild, $(kbuild-di
 # Files we need to clean
 
 __obj-files := $(filter %.o, $(obj-y))
+__obj-files += $(foreach _obj,$(patsubst %,%-objs,$(hostprogs-y)),$($(_obj)))
 obj-files   := $(__obj-files)
 obj-files	+= $(patsubst %.o,.%.o.cmd, $(__obj-files))
 obj-files	+= built-in.o .built-in.o.cmd
