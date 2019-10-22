@@ -153,7 +153,12 @@ include/config/%.conf: $(KCONFIG_CONFIG) include/config/auto.conf.cmd
 
 test: scripts_basic include/config/auto.conf include/config/tristate.conf
 	$(Q)$(MAKE) $(build)=test
-clean:
+
+PHONY += test_clean
+test_clean:
+	$(Q)$(MAKE) $(clean)=test
+
+clean: test_clean
 	$(Q)$(MAKE) $(clean)=scripts/kconfig
 
 endif
